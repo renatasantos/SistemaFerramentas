@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu_principal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.renata.sistemaferramentas.MenuPrincipalActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3BA0E2">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/icone_construcao"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layoutCorFundo"
+            android:background="#ef5350"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:text="Sistema Gerenciador de Ferrramentas"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="#FFFFFF"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:text="Escolha uma das opções abaixo:"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Cadastrar Ferramenta"
+            android:id="@+id/btCadastrarFerramenta"
+            android:drawableRight="@drawable/add3"
+            />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Alterar Dados"
+            android:id="@+id/btAlterarDados"
+            android:drawableRight="@drawable/editar"/>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Consultar Ferramenta"
+            android:id="@+id/btConsultarFerramenta"
+            android:drawableRight="@drawable/visualizar"/>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Excluir Ferramenta"
+            android:id="@+id/btExcluirFerramenta"
+           android:drawableRight="@drawable/excluir"/>
+
+    </LinearLayout>
+</LinearLayout>

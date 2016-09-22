@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.renata.sistemaferramentas.BuscaFerramentaActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#64b5f6">
+
+        <ImageView
+            android:id="@+id/imageview1"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/icone_construcao" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+        <LinearLayout
+            android:id="@+id/layoutCorFundo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ef5350"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistema Gerenciador de Ferramentas -        [BUSCAR]"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:text="Opções de Busca"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spOpcoes"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutCampoBusca"
+        android:visibility="invisible">
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/edPalavraChave"
+            android:layout_weight="1">
+
+            <requestFocus/>
+        </EditText>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/btBuscar"
+            android:text="Buscar"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:id="@+id/scrollView1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_weight="1"
+                android:id="@+id/lstResultadoBusca">
+
+            </ListView>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
