@@ -71,10 +71,10 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         });
 
         try {
-            db = openOrCreateDatabase("bancoDados", Context.MODE_PRIVATE, null);
-            db.execSQL("create table if not exists" + "ferramentas(numreg integer primary key" +
+            db = openOrCreateDatabase("banco_dados", Context.MODE_PRIVATE, null);
+            db.execSQL("create table if not exists" + "ferramentas(numreg integer primary key," +
                     "autoincrement, nome_ferramenta text not null, " + "fabricante text not null," +
-                    "preco float not null, " + "cor text not null, " + "referencia text not null)");
+                    "preco float not null, " + "cor text not null, referencia text not null)");
         } catch (Exception e) {
             MostraMensagem("Erro " + e.toString());
         }

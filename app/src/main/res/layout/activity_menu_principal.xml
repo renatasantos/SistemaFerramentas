@@ -9,8 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3BA0E2">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageView1"
