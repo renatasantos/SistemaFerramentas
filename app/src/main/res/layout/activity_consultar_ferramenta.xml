@@ -175,7 +175,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btfechar"
+            android:id="@+id/btFechar"
             android:text="Fechar Consulta"/>
     </LinearLayout>
 

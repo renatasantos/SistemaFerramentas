@@ -62,6 +62,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/edNomeFerramenta"
         android:ems="10">
 
         <requestFocus />
@@ -78,6 +79,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/edFabricante"
         android:ems="10"/>
 
     <LinearLayout
@@ -102,6 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:id="@id/edPreco"
                 android:inputType="numberDecimal"/>
         </LinearLayout>
         <LinearLayout
@@ -120,6 +123,7 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/edCor"
                 android:ems="10" />
         </LinearLayout>
     </LinearLayout>
@@ -134,7 +138,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edreferencia"
+        android:id="@+id/edReferencia"
         android:ems="10" />
 
     <LinearLayout
@@ -146,14 +150,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btalterar"
+            android:id="@+id/btAlterar"
             android:text="Alterar Dados"
             tools:ignore="ButtonStyle" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btfechar"
+            android:id="@+id/btFechar"
             android:text="Fechar"/>
     </LinearLayout>
 
