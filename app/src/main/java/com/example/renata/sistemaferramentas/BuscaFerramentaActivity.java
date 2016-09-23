@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,14 +20,13 @@ import java.util.ArrayList;
 import adapter.DadosFerramenta;
 import adapter.MyCustomRowBaseAdapter;
 
-import static com.example.renata.sistemaferramentas.R.id.lstResultadoBusca;
 
 public class BuscaFerramentaActivity extends AppCompatActivity {
 
     Spinner spnOpcoes;
     LinearLayout layoutCampoBusca;
     EditText edPalavraChave;
-    ListView lstResultaBusca;
+    ListView lstResultadoBusca;
     Button btBuscar;
     int opcaoBusca, opcaoDados, numReg;
     SQLiteDatabase db;
@@ -41,13 +41,13 @@ public class BuscaFerramentaActivity extends AppCompatActivity {
         spnOpcoes = (Spinner) findViewById(R.id.spnOpcoes);
         layoutCampoBusca = (LinearLayout) findViewById(R.id.layoutCampoBusca);
         edPalavraChave = (EditText) findViewById(R.id.edPalavraChave);
-        lstResultadoBusca = (ListView) findViewById(lstResultadoBusca);
+        lstResultadoBusca = (ListView) findViewById(R.id.lstResultadoBusca);
         btBuscar = (Button) findViewById(R.id.btBuscar);
 
         Bundle b = getIntent().getExtras();
         opcaoDados = b.getInt("opcao_dados");
 
-        spnOpcoes.setOnClickListener(new AdapterView.OnItemSelectedListener(){
+        spnOpcoes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -81,7 +81,7 @@ public class BuscaFerramentaActivity extends AppCompatActivity {
             }
         });
 
-        lstResultaBusca.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        lstResultadoBusca.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -117,14 +117,13 @@ public class BuscaFerramentaActivity extends AppCompatActivity {
             BuscarTudo();
         }
         catch (Exception e){
-            MOstraMensagem("Erro "+ e.toString());
+            MostraMensagem("Erro "+ e.toString());
         }
     }
 
    public void BuscarTudo(){
        c = db.query("ferramentas", new String[]{
-               "numreg", "nome_ferramenta", "fabricante", "referencia"} null, null, null, null, null);
-
+               "numreg", "nome_ferramenta", "fabricante", "referencia"}, null, null, null, null, null);
        c.moveToFirst();
 
        ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
@@ -139,12 +138,109 @@ public class BuscaFerramentaActivity extends AppCompatActivity {
            c.moveToNext();
        }
 
-       lstResultaBusca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
+       lstResultadoBusca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
    }
 
     public void BuscaPorNome (String palavraChave){
 
-        try
+        try {
+            c = db.query("ferramentas", new String[]{
+                    "numreg", "nome_ferramenta", "fabricante", "referencia"}, "nome_ferramenta like " +
+                    "'%" + palavraChave + "%'", null, null, null, null);
+            c.moveToFirst();
 
+            ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
+
+            if (c.getCount() > 0){
+
+                for (int x = 0; x < c.getCount(); x++){
+                    DadosFerramenta dadosFerramenta = new DadosFerramenta();
+                    dadosFerramenta.setNomeFerramenta(c.getString(1));
+                    dadosFerramenta.setFabricante(c.getString(2));
+                    dadosFerramenta.setReferencia(c.getString(3));
+                    dadosFerramentaArray.add(dadosFerramenta);
+                    c.moveToNext();
+                }
+                lstResultadoBusca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
+            }
+            else {
+                MostraMensagem("Nenhum registro foi encontrado");
+            }
+        }
+        catch (Exception e){
+            MostraMensagem("Erro "+ e.toString());
+        }
+    }
+
+    public void BuscaPorFabricante (String palavraChave){
+
+        try {
+            c = db.query("ferramentas", new String[]{
+                    "numreg", "nome_ferramenta", "fabricante", "referencia"}, "nome_ferramenta like " +
+                    "'%" + palavraChave + "%'", null, null, null, null);
+            c.moveToFirst();
+
+            ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
+
+            if (c.getCount() > 0){
+
+                for (int x = 0; x < c.getCount(); x++){
+                    DadosFerramenta dadosFerramenta = new DadosFerramenta();
+                    dadosFerramenta.setNomeFerramenta(c.getString(1));
+                    dadosFerramenta.setFabricante(c.getString(2));
+                    dadosFerramenta.setReferencia(c.getString(3));
+                    dadosFerramentaArray.add(dadosFerramenta);
+                    c.moveToNext();
+                }
+                lstResultadoBusca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
+            }
+            else {
+                MostraMensagem("Nenhum registro foi encontrado");
+            }
+        }
+        catch (Exception e){
+            MostraMensagem("Erro "+ e.toString());
+        }
+    }
+
+    public void BuscaPorReferencia (String palavraChave){
+
+        try {
+            c = db.query("ferramentas", new String[]{
+                    "numreg", "nome_ferramenta", "fabricante", "referencia"}, "nome_ferramenta like " +
+                    "'%" + palavraChave + "%'", null, null, null, null);
+            c.moveToFirst();
+
+            ArrayList<DadosFerramenta> dadosFerramentaArray = new ArrayList<DadosFerramenta>();
+
+            if (c.getCount() > 0){
+
+                for (int x = 0; x < c.getCount(); x++){
+                    DadosFerramenta dadosFerramenta = new DadosFerramenta();
+                    dadosFerramenta.setNomeFerramenta(c.getString(1));
+                    dadosFerramenta.setFabricante(c.getString(2));
+                    dadosFerramenta.setReferencia(c.getString(3));
+                    dadosFerramentaArray.add(dadosFerramenta);
+                    c.moveToNext();
+                }
+                lstResultadoBusca.setAdapter(new MyCustomRowBaseAdapter(this, dadosFerramentaArray));
+            }
+            else {
+                MostraMensagem("Nenhum registro foi encontrado");
+            }
+        }
+        catch (Exception e){
+            MostraMensagem("Erro "+ e.toString());
+        }
+    }
+
+    public void MostraMensagem(String str){
+
+        AlertDialog.Builder dialogo = new AlertDialog.Builder(BuscaFerramentaActivity.this);
+
+        dialogo.setTitle("Aviso");
+        dialogo.setMessage(str);
+        dialogo.setNeutralButton("OK", null);
+        dialogo.show();
     }
 }
